@@ -11,7 +11,7 @@ if __name__ == '__main__':
     while True:
         # 遗传变异
         # Pittsburge
-        child = ''
+        child = []
         child=algorithm.michigan(child)
         # 替换操作
         # 判断终止条件

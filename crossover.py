@@ -11,14 +11,9 @@ def crossover(p1, p2):
 def uniform_crossover(p1: fuzzy_rule, p2: fuzzy_rule):
     child1 = p1.rule
     child2 = p2.rule
-    for i in range(len(child1)):
+    for i in range(len(child1) - 1):
         if random.random() > 0.5:
             child1[i], child2[i] = child2[i], child1[i]
 
-    if random.random() > 0.5:
-        child = child1
-    else:
-        child = child2
-
+    child = [child1, child2][random.random() < 0.5]
     return fuzzy_rule(child)
-

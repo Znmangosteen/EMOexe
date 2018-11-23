@@ -1,10 +1,10 @@
-import crossover, mutation
+import crossover, mutation, selection
 
 
 def NSGAII(population: list) -> list:
     pass
 
 
-def michigan(population:list):
+def michigan(population: list):
 
     pass
