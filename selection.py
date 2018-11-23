@@ -2,7 +2,7 @@ import random
 from fuzzyRule import fuzzy_rule
 
 
-def binary_tournament_selection(front: list) -> fuzzy_rule:
+def binary_tournament_selection(front: list):
     if front is None:
         raise Exception('The front is null')
     elif len(front) == 0:
@@ -16,7 +16,7 @@ def binary_tournament_selection(front: list) -> fuzzy_rule:
         solution1 = front[i]
         solution2 = front[j]
 
-        flag = fuzzy_rule.compare(solution1, solution2)
+        flag = solution1.compare(solution2)
 
         if flag == -1:
             result = solution1

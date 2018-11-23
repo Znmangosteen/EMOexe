@@ -1,2 +1,2 @@
-def initialization(population:list, size:int):
+def initialization(size:int):
     pass
