@@ -2,7 +2,7 @@ import random
 from fuzzyRule import fuzzy_rule
 
 
-def crossover(p1, p2):
+def rule_set_crossover(p1, p2):
     child = fuzzy_rule()
 
     return child
