@@ -1,14 +1,14 @@
 import random
-from fuzzyRule import fuzzy
+from fuzzyRule import fuzzy_rule
 
 
 def crossover(p1, p2):
-    child = fuzzy()
+    child = fuzzy_rule()
 
     return child
 
 
-def uniform_crossover(p1: fuzzy, p2: fuzzy):
+def uniform_crossover(p1: fuzzy_rule, p2: fuzzy_rule):
     child1 = p1.rule
     child2 = p2.rule
     for i in range(len(child1)):
@@ -20,5 +20,5 @@ def uniform_crossover(p1: fuzzy, p2: fuzzy):
     else:
         child = child2
 
-    return fuzzy(child)
+    return fuzzy_rule(child)
 

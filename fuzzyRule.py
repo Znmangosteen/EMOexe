@@ -1,4 +1,8 @@
-class fuzzy:
+class rule_set:
+    def __init__(self):
+        pass
+
+class fuzzy_rule:
 
     # fuzzy rule包括规则的主体(list)和适应度
     def __init__(self, rule: list):
