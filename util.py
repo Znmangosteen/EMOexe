@@ -3,8 +3,8 @@ import copy
 def normalize(data):
     pass
 def readData(path):
-    dictS2I = {}
-    dictI2S = {}
+    dictL2I = {}
+    dictI2L = {}
     NClass = 0
     file=open(path)
     data = []
@@ -17,15 +17,15 @@ def readData(path):
             d.append(float(i))
         str = l[len(l)-1][:-1]
         #print("str:",str)
-        if (str not in dictS2I.keys() and str != ''):
+        if (str not in dictL2I.keys() and str != ''):
             NClass += 1
-            dictS2I[str] = NClass
-            dictI2S[NClass] = str
+            dictL2I[str] = NClass
+            dictI2L[NClass] = str
         if(str != ''):
-            d.append(dictS2I[str])
+            d.append(dictL2I[str])
             data.append(d)
 
-    #print(dictS2I)
+    #print(dictL2I)
     #print(data)
     data = data[:-1]
     maxVal = copy.deepcopy(data[0][:-1])
@@ -47,7 +47,7 @@ def readData(path):
 
     #for d in data:
      #   print(d)
-    return(data)
+    return data,NClass,dictL2I,dictI2L
 
 
 
