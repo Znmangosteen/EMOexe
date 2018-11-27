@@ -1,4 +1,4 @@
-import crossover, mutation, selection, random, init
+import crossover, mutation, selection, random, init, copy, exer4
 
 
 def NSGAII(population, p, gen_num, constant, size=100) -> list:
@@ -9,31 +9,53 @@ def NSGAII(population, p, gen_num, constant, size=100) -> list:
 
     # 进化gen_num代
     for j in range(gen_num):
+        print("gen_num:" + str(j))
         offspring_population = []
         pareto_ranking(population)
-
+        print("ranked")
         # 生成子代个体并放到offspring_population
         for i in range(size):
+            # print("i th: " + str(i))
             p1, p2 = selection.binary_tournament_selection(population)
+            # print("selected")
+
+            c = copy.deepcopy(p1)
+
+            cp1_rules = p1.rules.copy()
+            cp2_rules = p2.rules.copy()
 
             if random.random() < pc:
                 # crossover for rule set
-                child = crossover.rule_set_crossover(p1, p2)
-                pass
+                child = crossover.rule_set_crossover(cp1_rules, cp2_rules)
             else:
-                child = [p1, p2][random.random() < 0.5]
+                child = [cp1_rules, cp2_rules][random.random() < 0.5]
 
-            if random.random() < pm:
-                child = mutation.rule_set_mutation(child)
+            # print("crossover")
+            # if random.random() < pm:
+            #     child = mutation.rule_set_mutation(child)
+
+            c.rules = child
+            c.getFitness(exer4.trainingData)
 
             if random.random() < pMchi:
                 child = michigan(child, N, p[3:5])
+            # print("Michigan over")
 
-            offspring_population.append(child)
+            c.rules = child
+            c.getFitness(exer4.trainingData)
+
+            offspring_population.append(c)
+            # print("added")
+            # print()
+        print("offspring generated")
 
         # 合并父子代并选择
         population = merge_and_select(population, offspring_population, size)
+        print("re-ranked")
     pareto_ranking(population)
+    print("final ranked")
+    print()
+
     pareto_set = []
     for solution in population:
         if solution.pareto == 1:
@@ -45,7 +67,7 @@ def merge_and_select(population: list, offspring_population: list, size):
     total_population = population + offspring_population
 
     pareto_ranking(total_population)
-    total_population.sort()
+    total_population.sort(key=lambda x: x.pareto, reverse=False)
 
     return total_population[:size]
 
@@ -53,17 +75,22 @@ def merge_and_select(population: list, offspring_population: list, size):
 def pareto_ranking(population: list):
     size = len(population)
     n = [0] * size
-    S = [set()] * size
+    S = []
+    for i in range(size):
+        a = set()
+        S.append(a)
     for i in range(size - 1):
         for j in range(i + 1, size):
             s1 = population[i]
             s2 = population[j]
 
-            if (s1.fit1 >= s2.fit1 and s1.fit2 >= s2.fit2) and (s1.fit1 > s2.fit1 or s1.fit1 > s2.fit1):
-                n[i] += 1
-                S[i].add(j)
-            elif (s1.fit1 <= s2.fit1 and s1.fit2 <= s2.fit2) and (s1.fit1 < s2.fit1 or s1.fit1 < s2.fit1):
+            if (s1.fitness >= s2.fitness and s1.fitness2 >= s2.fitness2) and (
+                    s1.fitness > s2.fitness or s1.fitness2 > s2.fitness2):
                 n[j] += 1
+                S[i].add(j)
+            elif (s1.fitness <= s2.fitness and s1.fitness2 <= s2.fitness2) and (
+                    s1.fitness < s2.fitness or s1.fitness2 < s2.fitness2):
+                n[i] += 1
                 S[j].add(i)
 
     F = set()
@@ -80,9 +107,8 @@ def pareto_ranking(population: list):
             for i in S[k]:
                 n[i] -= 1
                 if n[i] == 0:
-                    pass
                     H.add(i)
-        F = H
+        F = H.copy()
         H.clear()
         pareto_num += 1
 
@@ -92,23 +118,32 @@ def michigan(population: list, N, p):
     pm = p[1]
 
     # sort population
-    population.sort()
+    population.sort(key=lambda x: x.fitness, reverse=True)
 
     child_set = []
 
     for i in range(N):
+        # P1 p2是rule
         p1, p2 = selection.binary_tournament_selection(population)
+
+        c = copy.deepcopy(p1)
+
+        cp1_rule = p1.rule.copy()
+        cp2_rule = p2.rule.copy()
 
         if random.random() < pc:
             # crossover for rule
-            child = crossover.uniform_crossover(p1, p2)
+            child_rule = crossover.uniform_crossover(cp1_rule, cp2_rule)
         else:
-            child = [p1, p2][random.random() < 0.5]
+            child_rule = [cp1_rule, cp2_rule][random.random() < 0.5]
 
         if random.random() < pm:
-            child = mutation.rule_mutation(child)
+            child_rule = mutation.rule_mutation(child_rule)
 
-        child_set.append(child_set)
+        c.rule = child_rule
+        c.Cq, c.CFq = c.getCqCFq(child_rule, exer4.trainingData)
+
+        child_set.append(c)
 
     population[:N] = child_set
 
