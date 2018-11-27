@@ -1,7 +1,7 @@
 import mbFunc as mb
 import random
 import util
-N = 6 # number of membership functions
+N = 15 # number of membership functions
 class rule_set:
     pareto = 0
     rules = []
@@ -43,7 +43,7 @@ class rule_set:
                 fitness += 1
             hit[index]+=1
         self.fitness = fitness
-        print(hit)
+        # print(hit)
         for i in range(len(self.rules)):
             self.rules[i].fitness = hit[i]
         return self.fitness/len(testData)
@@ -51,7 +51,7 @@ class rule_set:
 
 
 class fuzzy_rule:
-    pDC = 0#probablity of don't care
+    pDC = 0.1#probablity of don't care
     rule = []
     Cq = 0
     CFq = 0
@@ -120,44 +120,6 @@ class fuzzy_rule:
         for i in list:
             print(i)
 
-data,NClass,dictL2I,dictI2L = util.readData("./data/iris.dat")
-pData =0.1# proportion of training data
-N = int(pData * len(data))
-
-#print("train: ",len(trainingData))
-#print("test: ",len(testData))
-#for data in testData:
- #   print(data)
 
 
-#print(xp)
-
-#for rule in RS.rules:
- #   print(rule.rule," Cq:",rule.Cq, " CFq:",rule.CFq)
-
-nRight = 0
-accuracy = 0
-#for i in range(10):
-
-   # accuracy += nRight/(len(testData)*10)
-print("accuracy: ", accuracy)
-trainingData = []
-testData = []
-random.shuffle(data)
-trainingData = data[:N]
-testData = data
-rule = fuzzy_rule(trainingData[0], trainingData)
-RS = rule_set(trainingData)
-index = random.randint(0, len(trainingData) - 1)
-xp = trainingData[index]
-nRight = 0
-for data2 in testData:
-    xp = data2[:-1]
-    result = RS.classify(xp)
-    if(result == data2[-1]):
-        nRight += 1
-
-print("accuracy:",nRight/len(testData), "fitness:", RS.getFitness(testData))
-for i in range(len(RS.rules)):
-    print("rule ", i, " win ", RS.rules[i].fitness)
 
