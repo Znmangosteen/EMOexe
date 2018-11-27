@@ -1,6 +1,7 @@
 import mbFunc as mb
 import random
 import util
+import copy
 N = 15 # number of membership functions
 class rule_set:
     pareto = 0
@@ -41,7 +42,7 @@ class rule_set:
             result, index = self.classify(data)
             if(result == data[-1]):
                 fitness += 1
-            hit[index]+=1
+                hit[index]+=1
         self.fitness = fitness
         # print(hit)
         for i in range(len(self.rules)):
@@ -58,8 +59,10 @@ class fuzzy_rule:
     fitness = 0
     # fuzzy rule包括规则的主体(list)和适应度
     def __init__(self, pattern, trainingData):
-        #print("pattern: ", pattern)
-        self.rule = self.genRule(pattern)
+        if type(pattern)==fuzzy_rule:
+            self.rule = copy.deepcopy(pattern.rule)
+        else:
+            self.rule = self.genRule(pattern)
         self.Cq, self.CFq = self.getCqCFq(self.rule, trainingData)
 
     def get_fitness(self, rule):
