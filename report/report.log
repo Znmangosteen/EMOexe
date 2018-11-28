@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.28)  28 NOV 2018 22:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.28)  29 NOV 2018 00:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -278,21 +278,26 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen150
 \Gin@req@width=\dimen151
+)
+(f:/texlive/2018/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks25
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+
 -- Lines per column: 56 (exact).
 (f:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -301,12 +306,12 @@ LaTeX Font Info:    ... okay on input line 23.
 \scratchbox=\box34
 \nofMPsegments=\count122
 \nofMParguments=\count123
-\everyMPshowfont=\toks25
+\everyMPshowfont=\toks26
 \MPscratchCnt=\count124
 \MPscratchDim=\dimen153
 \MPnumerator=\count125
 \makeMPintoPDFobject=\count126
-\everyMPtoPDFconversion=\toks26
+\everyMPtoPDFconversion=\toks27
 ) (f:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -366,18 +371,46 @@ e
 
 
 ]
-Overfull \hbox (47.29861pt too wide) in paragraph at lines 77--88
+Overfull \hbox (47.29861pt too wide) in paragraph at lines 78--89
 [] 
  []
 
 <iris.png, id=12, 951.555pt x 540.0175pt>
 File: iris.png Graphic file (type png)
 <use iris.png>
-Package pdftex.def Info: iris.png  used on input line 91.
+Package pdftex.def Info: iris.png  used on input line 92.
 (pdftex.def)             Requested size: 258.0pt x 146.41643pt.
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 91--92
+Overfull \hbox (6.0pt too wide) in paragraph at lines 92--93
  [][] 
+ []
+
+<master.png, id=13, 709.90219pt x 805.50937pt>
+File: master.png Graphic file (type png)
+<use master.png>
+Package pdftex.def Info: master.png  used on input line 100.
+(pdftex.def)             Requested size: 258.0pt x 292.74864pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 100--101
+ [][] 
+ []
+
+<slave.png, id=15, 822.82407pt x 752.0597pt>
+File: slave.png Graphic file (type png)
+<use slave.png>
+Package pdftex.def Info: slave.png  used on input line 105.
+(pdftex.def)             Requested size: 258.0pt x 235.80988pt.
+
+Overfull \hbox (6.0pt too wide) in paragraph at lines 105--106
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./iris.png (PNG copy)> <./master.png> <./slave.png>]
+Underfull \hbox (badness 2913) in paragraph at lines 117--118
+[]\OT1/ptm/m/n/10 Lisening each is-land, ex-change(migrate) pop-u-la-tion
  []
 
 (./report.bbl)
@@ -392,28 +425,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
-
- <./iris.png (PNG copy)>] (./report.aux) ) 
+[3] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4177 strings out of 492649
- 58757 string characters out of 6133383
- 135686 words of memory out of 5000000
- 8001 multiletter control sequences out of 15000+600000
+ 4208 strings out of 492649
+ 59181 string characters out of 6133383
+ 138130 words of memory out of 5000000
+ 8028 multiletter control sequences out of 15000+600000
  34597 words of font info for 65 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,7n,25p,806b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
-{f:/texlive/2018/texmf-dist/fonts/enc
-/dvips/base/8r.enc}<f:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb><f:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
-<f:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><f:/texliv
-e/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><f:/texlive/2018/texmf-dist/
-fonts/type1/urw/times/utmbi8a.pfb><f:/texlive/2018/texmf-dist/fonts/type1/urw/t
-imes/utmr8a.pfb><f:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (2 pages, 102562 bytes).
+ 41i,7n,25p,849b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
+{f:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<f:
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><f:/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><f:/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><f:/texlive/2018/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb><f:/texlive/2018/texmf-dist/fonts/type1/urw/times/
+utmbi8a.pfb><f:/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><f:/te
+xlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (3 pages, 163542 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 49 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
