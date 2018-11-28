@@ -6,4 +6,16 @@ H.~Ishibuchi and Y.~Nojima, ``Analysis of interpretability-accuracy tradeoff of
   International Journal of Approximate Reasoning}, vol.~44, no.~1, pp.~4--31,
   2007.
 
+\bibitem{ISHIBUCHI20074}
+H.~Ishibuchi and Y.~Nojima, ``Analysis of interpretability-accuracy tradeoff of
+  fuzzy systems by multiobjective fuzzy genetics-based machine learning,'' {\em
+  International Journal of Approximate Reasoning}, vol.~44, no.~1, pp.~4 -- 31,
+  2007.
+\newblock Genetic Fuzzy Systems and the Interpretability–Accuracy Trade-off.
+
+\bibitem{996017}
+K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan, ``A fast and elitist
+  multiobjective genetic algorithm: Nsga-ii,'' {\em IEEE Transactions on
+  Evolutionary Computation}, vol.~6, pp.~182--197, April 2002.
+
 \end{thebibliography}
