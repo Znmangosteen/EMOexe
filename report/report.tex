@@ -8,7 +8,7 @@
   \usepackage{url}
   \usepackage{cite}
   \usepackage{complexity}
-\usepackage{algpseudocode}
+  \usepackage{algpseudocode}
 % \usepackage{algorithm}
   \ifCLASSINFOpdf
   
@@ -21,7 +21,7 @@
   
   \begin{document}
   
-  \title{Parallel Distributed Fuzzy GBML - Mid Term Report}
+  \title{Parallel Distributed Multi-objective Fuzzy Genetics-based Machine Learning \\ Mid Term Report}
   
   \author{\IEEEauthorblockN{Bowen Zheng, Shijie Chen, Shuxin Wang}
   \IEEEauthorblockA{Department of Computer Science and Engineering\\
@@ -32,23 +32,34 @@
   \maketitle
   
   \begin{abstract}
-  
+  In the second period of the project, we finished the design of fuzzy classifiers, GBML framework and the asynchronous parallel distributed system. We have implemented each part respectively and are working to integrate them together.
   \end{abstract}
   \IEEEpeerreviewmaketitle
   
-  \section{Preliminaries}
+  \section{Introduction}
+  In this project, we aim to build a parallel distributed implementation of a multi-objective genetics based machine learning(GBML) algorithm. We choose a specific problem of a three-objective fuzzy rule-based classifier and fit it into a hybrid GBML framework. Then we develop a parallel mechanism to accelerate computation.
 
-\section{Methodology}
+  Code of the three parts have been completed. We will integrate them together, fix bugs and run some test problems in the next stage.
 
-\section{Validation}
+  \section{Fuzzy Rule-based Classifiers}
+  The design and implementation of fuzzy classifier is based on \cite{ishibuchi2007analysis}.
+  \subsection{Fuzzy Rules}
+  \subsection{Fuzzy Classifier}
+
+  \section{Hybrid Genetics-based Machine Learning Framework}
 	 
-\section{Discussion}
+  \section{Asynchronous Parallel Distributed System Design}
 
 
-\section{Conclusion}
+  \section{Contribution}
+    \begin{itemize}
+    \item Bowen Zheng - Design \& Implementation of parallel system
+    \item Shijie Chen - Design \& Implementation of fuzzy classifier, Design of parallel system
+    \item Shuxin Wang - Design \& Implementation of Hybrid GBML framework
+    \end{itemize}
+    
 
-\section*{Acknowledgment}
-
+  \section*{Acknowledgment}
 
 
 \bibliographystyle{ieeetr}
