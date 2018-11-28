@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex report"] 1543413917 "report.aux" "report.bbl" "report" 1543414395
+["bibtex report"] 1543422175 "report.aux" "report.bbl" "report" 1543422176
   "/usr/local/texlive/2018/texmf-dist/bibtex/bst/base/ieeetr.bst" 1480098433 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "ref.bib" 1543371125 1015 99eba62e85e50171372e34ee277e6d8b ""
-  "report.aux" 1543414395 1236 9bf8910768207ea95e5eb4bc7fac9313 ""
+  "ref.bib" 1543419150 2827 c8805ed98dbd649c554ea8359234e70b ""
+  "report.aux" 1543422175 2125 56a36a503055efa7c989f21701b90ad7 ""
   (generated)
   "report.blg"
   "report.bbl"
-["pdflatex"] 1543414394 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543414395
-  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543414394 6268 356dbc5c3dfb44dc9da663938bb8170f ""
+["pdflatex"] 1543422175 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543422176
+  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543422173 10914 7c4427d1d29d565811c6a1911c24031e ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -92,11 +92,12 @@
   "IEEEtran.cls" 1543369009 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "algorithmicx.sty" 1543369009 26750 ce139c05a983e19ddca355b43e29c395 ""
   "algpseudocode.sty" 1543369009 3457 d9077efe6b74c5a094199256af8d7d9a ""
-  "figures/mfunc.png" 1543374133 53912 81d5846ed742c552cba1bdc757f839fa ""
-  "report.aux" 1543414395 1236 9bf8910768207ea95e5eb4bc7fac9313 ""
-  "report.bbl" 1543413917 329 89eab096bafcb0c23e14d5cefbab9105 "bibtex report"
-  "report.tex" 1543414394 6268 356dbc5c3dfb44dc9da663938bb8170f ""
+  "figures/iris.png" 1543422081 12924 7d22a04eb1e7fbfbb26121c3dd61f065 ""
+  "figures/mfunc.png" 1543418773 53912 81d5846ed742c552cba1bdc757f839fa ""
+  "report.aux" 1543422175 2125 56a36a503055efa7c989f21701b90ad7 ""
+  "report.bbl" 1543422175 553 3bfc9b454da3404a9aac2b975e3d36fc "bibtex report"
+  "report.tex" 1543422173 10914 7c4427d1d29d565811c6a1911c24031e ""
   (generated)
-  "report.log"
   "report.aux"
+  "report.log"
   "report.pdf"
