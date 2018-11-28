@@ -9,6 +9,7 @@
   \usepackage{cite}
   \usepackage{complexity}
   \usepackage{algpseudocode}
+  \usepackage{graphicx}
 % \usepackage{algorithm}
   \ifCLASSINFOpdf
   
@@ -44,8 +45,86 @@
   \section{Fuzzy Rule-based Classifiers}
   The design and implementation of fuzzy classifier is based on \cite{ishibuchi2007analysis}.
   \subsection{Fuzzy Rules}
-  \subsection{Fuzzy Classifier}
+  We use the following "if-then" rules:
+  $$Rule\;R_q:\;if\;x_{pi}\;is\;A_{qi},\;i\in [1,n]\;then\;Class\;C_q\;with\;CF_q$$
 
+  \begin{table}[H]
+    \caption{Notation}
+    \centering
+      \begin{tabular}{cccc}
+      \toprule
+      Variable&Name\\
+      \midrule
+      $n$&dimension of patterns\\
+      $M$&number of classes of patterns\\
+      $S$&a fuzzy classifier\\
+      $I$&number of membership functions\\
+      $x_p$&a pattern vector\\
+      $x_{pi}$&attribute of $x_p$ value on $i$-th dimension\\
+      $A_{qi}$&antecedent fuzzy set\\
+      $\mu_{A_{qi}}(x)$&membership function of $A_{qi}$\\
+      $\mu_{A_{q}}(x_p)$&compatibility grade of $x_p$ with $A_q$\\
+      $A_q$&antecedent part of $q$-th rule\\
+      
+      $R_q$&$q$-th rule\\
+      $C_q$&consequent class for $q$-th rule\\
+      $CF_q$&rule weight for $q$-th rule\\
+  \bottomrule
+  \end{tabular}
+  \label{table:1}
+  \end{table}
+  Input vectors are normalized to a hypercube $[0,1]^n$ using the following equation:
+  $$x_{pi}=\frac{x_{pi}-min(x_{i})}{max(x_{i})-min(x_{i})}$$
+
+  The antecedent fuzzy set contains a membership function of the form:
+  $$\mu_{A_{qi}}(x_{pi}) =max\{1-\frac{|a-x_{pi}|}
+  {b},0\}$$
+  $$a=\frac{k-1}{K-1}$$
+  $$b=\frac{1}{K-1}$$
+  Where K is the number of intervals of fuzzy set $A_{qi}$ and k is the order of the interval. As shown in fig.\ref{fig:mfunc}. The $don't\;care$ condition is a constant function with value 1. As we will discuss in classification process, the feature $x_{pi} $ with $A_{qi}$ being $don't\;care$ is ignored.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.4\textwidth]{figures/mfunc.png}
+    \caption{Membership functions with at most 3 intervals}
+    \label{fig:mfunc}
+  \end{figure}
+
+  The antecedent part of $R_q$ is a set of antecedent fuzzy sets. $$A_q = \{A_{qi}|i\in [1,n]\}$$
+
+  We define the compatibility grade of an pattern $x_p$ with rule $R_q$ as
+  $$\mu_{A_q}(x_p) = \prod_{i = 1}^{n}\mu_{A_{qi}}(x_{pi})$$
+
+  Then we determine the consequent class $C_q$ and rule weight $CF_q$ using training patterns as follows:
+
+  First, we compute the confidence of fuzzy rule $R_q$ to each class $c(A_q \Rightarrow Class\;h), h \in[1,M]$
+  $$c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p)}{\sum\limits_{p=1}^m\mu_{A_q}(x_p)}$$
+
+  Then the consequent class $C_q$ as the class with which $R_q$ has the largest confidence.
+  $$c(A_q \Rightarrow Class\;C_q)=max\{c(A_q \Rightarrow Class\;h)|h \in [1,M]\}$$
+  
+  At last, rule weight of $R_q$ is given by the difference between its consequent class and other classes.
+  $$CF_q = c(A_q\Rightarrow Class\;C_q)-\sum\limits_{h=1, h\neq C_q}^{M}c(A_q\Rightarrow Class \; h)$$
+
+  Rule weight shows the quality of a classification result given by a fuzzy rule. If a rule has negative rule weight, its abandoned.
+  
+  \subsection{Fuzzy Classifier}
+  
+  A fuzzy classifier $S$ is a set of fuzzy rules. Given an input pattern $x_p$, the classification result $C_w$ is produced by a winning rule $R_w$, chosen as follows:
+  $$\mu_{A_w}(x_p) \cdot CF_w = max\{\mu_{A_q}(x_p)\cdot CF_q|R_q\in S\}$$
+  \subsection{Generate Fuzzy Rule From Training Patterns}
+  At the initiation stage of our GBML algorithm, the population, set of fuzzy classifiers, is created from training data. We can use certain training patterns to create a fuzzy classifier and repeat the process to create a set of classifiers.
+  
+  Each rule $R_t$ in each classifier is generated from a training pattern $x_t$ as follows:
+% \begin{itemize}
+    % \item
+
+  We choose an antecedent fuzzy set according to each $x_{ti}$ and form the antecedent part $A_t$ of rule $R_t$ so that $x_{t}$ has the largest compatibility:
+  $$ \A_{ti} = \underset{\mu_j}{\arg\max}\{\mu_{j}(x_{ti})\},j \in [1,I]$$
+    % \item 
+  
+  Then, randomly change the antecedent fuzzy set to $dont't\;care$ according to a pre-specified probability $p_{dc}$. This step prevents overfitting and improves generalizing ability of fuzzy rules.
+% \end{itemize}
   \section{Hybrid Genetics-based Machine Learning Framework}
 	 
   \section{Asynchronous Parallel Distributed System Design}
