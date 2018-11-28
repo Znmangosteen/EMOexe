@@ -11,6 +11,7 @@
   \usepackage{algpseudocode}
    \usepackage{graphicx}
    \usepackage{enumerate}
+   \usepackage{subcaption}
 % \usepackage{algorithm}
   \ifCLASSINFOpdf
   
@@ -160,49 +161,80 @@
 	 
 	 \subsection{Michigan-style GBML}
 	 
-	 Different from the Pittsburgh-style algorithm, Michigan-style GBML sees a single fuzzy rule as the population and sees the membership function as an individual. We use Michigan-style GBML as a mutation operator acting on a single rule to enrich the diversity of our population. 
+   Different from the Pittsburgh-style algorithm, Michigan-style GBML sees a single fuzzy rule as the population and sees the membership function as an individual. We use Michigan-style GBML as a mutation operator acting on a single rule to add diversity to the population. 
    
   
    
   \section{Asynchronous Parallel Distributed System Design}
-  We propose a new asynchronous parallel distributed model to reduce the cost of time on our fuzzy classifier GBML (Fig.1 Fig.2). Our model can be represented as 3 parts: 1. Dataset distributor 2. Local island worker model 3. Population migration control. (For convenience, slave process will be called as island)
+  We propose an asynchronous parallel distributed system as shown in fig.\ref{fig:fig} to accelerate our GBML algorithm. The model includes 3 parts: dataset distributor, local island worker and population migration control. (For convenience, slave process will be called as island)
 
 
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.4\textwidth]{figures/master.png}
- 	\caption{Pareto front obtained on Iris Flowers}\label{fig:digit}
- \end{figure}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{figures/master.png}
+      \caption{master process}
+      \label{fig:sfig1}
+    \end{subfigure}%
+    \begin{subfigure}{0.45\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{figures/slave.png}
+      \caption{slave process}
+      \label{fig:sfig2}
+    \end{subfigure}
+    
+    \caption{Master-slave Design}
+    \label{fig:fig}
+    \end{figure}
+  \subsection{Master Process}
+  \begin{enumerate}
+  \item read dataset and initialize the dataset pool
+  \item distribute $N_land$ simples to each P islands through dataset distributor layer.
+  \item start P slave processes, which each of them works on a cpu core.
+  \item wait for all islands run its “init” part and return their population. Use these populations, build an initialized population pool.
+  \item generate new population for each island and start its "main" part
+  \item Listening each island, exchange(migrate) population when an island run a certain iterations $I_update$.
+  \item terminate when all listener receive the stop message.
+  \end{enumerate}
+  \subsection{Slave Processes}
+  Init:
+  \begin{enumerate}
+  \item Receive training dataset from the master process.
+  \item Initialize population from the dataset.
+  \item Run the GBML for $I_init$ iterations.
+  \item upload population to the master process.
+  \end{enumerate}
 
-	\subsection{Dataset distributor:}
-	This layer is responsible for the dataset distribution process, which delivering a partial of dataset to each island. During this process, the distributor picks $N_{land}$ data from the dataset pool without replacement, then put them into an island on one slave process. Repeat this procedure until all islands get their “environment”
-	\subsection{Migration Algorithm:}
-	This layer is responsible for the population exchange process. Before slave processes run “init” part, this layer establishes connections between the master process and each other island to listen to them. When an island completes that part, it will stop, upload the current population to this layer and wait for new population feedback from this layer. After this layer receives roughly trained population from all islands, it will generate a population pool based on these population and finished the initialization of this layer.
+  Main:
+  \begin{enumerate}
+  \item Run the GBML for $I_update$ iterations.
+  \item Upload the population to the master process and wait for the new population from migration control layer.
+  \item Terminates if stopping criterion is met and sent a ending message to the master process.
+  \end{enumerate}
+
+	\subsection{Dataset Distributor:}
+	The dataset distributor is responsible for the dataset distribution process, which delivers a portion of the training dataset to each island as local training data. During this process, the distributor randomly picks $N_{land}$ data from the dataset pool and send it to a slave process. Repeat this procedure for each island.
+  \subsection{Population Migration Control:}
+  In the initialization stage, the population migration control layer send training data to each island and awaits returned population. When it receives returned population from all islands, it put together these populations and form a large population pool. 
 	
+	After the initialization, this layer delivers new population to each island on request and activates their “main” part. The new population is generated by randomly selecting $ N_{pop_i}$ individuals from the current population pool. Selected data will be deleted from the pool so that the size of the pool remains unchanged.
 	
-	After the initialization, this layer will delivering new population to each island and start their “main” part. The new population is generated by random sampling $ N_{pop_i}$ individuals from the population pool without replacement.
-	
-	
-	After the “main” part is started, each island can choose to update its population through this layer when finished certain iterations $I_{update}$ by themselves, which is known as one epoch.This layer will firstly put the population uploaded from the island to the pool and randomly select the same amount of individual from the pool, then delete them from the pool. Note that comparing to the process of initialization of population pool, the control rule is given to the island rather than this control layer, therefore it is a more asynchronous way to deal with the migration of population between the island and the big population pool, which will reduce or even eliminate the barrier time cost. This will significantly improve the performance when the spent time on each epoch varies dramatically for different islands.
+  \subsection{Asynchronous Population Migration}
+  After initialization, each island will run the GBML algorithm independently for $I_{update}$ iterations and then updates its population through population migration control layer. In this way, population migration of each island is independent. We expect that our model could improve parallel efficiency especially when the update interval of the islands are different. This will also allow us to run the GBML algorithm on different CPUs with different configurations to further enhance search ability.
   
   
   \section{Computational Experiments}
+
 	 Our current implementation has integrated the hybrid GBML framework and the fuzzy rule-based classifier. Feasibility test is done on the Iris Flower dataset. The result is as follows:
-	%  \\
-	%  \begin{tabular}{cccccc}
-	%  	\hline
-	%  	Number of rules& 1& 2&3&4&5\\
-	%  	\hline
-	%  	NO. of correctly classified pattern& 49& 99&132&134&137\\
-	%  	\hline
-	%  	error rate&0.67&0.34&0.12&0.11&0.09\\
-	%  	\hline
-	%  \end{tabular}
+
  \begin{figure}[H]
  	\centering
  	\includegraphics[width=0.4\textwidth]{figures/iris.png}
  	\caption{Pareto front obtained on Iris Flowers}\label{fig:digit}
  \end{figure}
+
+ We will fix bugs (if any) of the fuzzy GBML algorithm and then integrate the algorithm into our proposed asynchronous parallel framework. 
 
   \section{Contribution}
   

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex report"] 1543425629 "report.aux" "report.bbl" "report" 1543425630
+["bibtex report"] 1543428298 "report.aux" "report.bbl" "report" 1543428299
   "/usr/local/texlive/2018/texmf-dist/bibtex/bst/base/ieeetr.bst" 1480098433 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
   "ref.bib" 1543419150 2827 c8805ed98dbd649c554ea8359234e70b ""
-  "report.aux" 1543425630 2349 9e5c78f21e853e27459eedc50c6b7f11 ""
+  "report.aux" 1543428299 3042 8ab839d0c2e2c56c00dff8d2ca416ade ""
   (generated)
-  "report.bbl"
   "report.blg"
-["pdflatex"] 1543425629 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543425630
-  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543425626 12972 8e9281b926fcb9a5058e28fce8e815cb ""
+  "report.bbl"
+["pdflatex"] 1543428298 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543428299
+  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543428296 14438 7804cbf20b10a18a98114b4153bfff02 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -67,6 +67,9 @@
   "/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty" 1523134290 2432 8ff93b1137020e8f21930562a874ae66 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty" 1523050425 5161 c004ea5a189d4bdcf42e86754ad75a58 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty" 1480098823 5869 94335281ffcab47f341cf07ea8220e30 ""
+  "/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty" 1480098823 66233 8b81cfab95a1f8fc2f0f6c89415b087a ""
+  "/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty" 1480098823 64866 1ea74c5f2d1685881497f021b8f186b2 ""
+  "/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty" 1480098823 5038 413302044f9700cf65465d590c2f4ad1 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/cite/cite.sty" 1480098825 26218 19edeff8cdc2bcb704e8051dc55eb5a7 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/complexity/complexity.sty" 1505594840 26143 7d572ae81bd3f5cfbfb151760bf949c4 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/complexity/mycomplexity.sty" 1480098825 493 940abec71250a8c7129fe57eea5f60b6 ""
@@ -94,11 +97,13 @@
   "algorithmicx.sty" 1543369009 26750 ce139c05a983e19ddca355b43e29c395 ""
   "algpseudocode.sty" 1543369009 3457 d9077efe6b74c5a094199256af8d7d9a ""
   "figures/iris.png" 1543422081 12924 7d22a04eb1e7fbfbb26121c3dd61f065 ""
+  "figures/master.png" 1543426038 4043742 de41d0a51cfdaf642ac051dcf343ba1e ""
   "figures/mfunc.png" 1543418773 53912 81d5846ed742c552cba1bdc757f839fa ""
-  "report.aux" 1543425630 2349 9e5c78f21e853e27459eedc50c6b7f11 ""
-  "report.bbl" 1543425629 553 3bfc9b454da3404a9aac2b975e3d36fc "bibtex report"
-  "report.tex" 1543425626 12972 8e9281b926fcb9a5058e28fce8e815cb ""
+  "figures/slave.png" 1543426041 4375801 552a2fb4f6fe62a80ece32f998675040 ""
+  "report.aux" 1543428299 3042 8ab839d0c2e2c56c00dff8d2ca416ade ""
+  "report.bbl" 1543428298 553 3bfc9b454da3404a9aac2b975e3d36fc "bibtex report"
+  "report.tex" 1543428296 14438 7804cbf20b10a18a98114b4153bfff02 ""
   (generated)
-  "report.pdf"
-  "report.aux"
   "report.log"
+  "report.aux"
+  "report.pdf"
