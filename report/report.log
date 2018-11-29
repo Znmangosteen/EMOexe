@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.17)  29 NOV 2018 09:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.17)  29 NOV 2018 16:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -287,21 +287,25 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@toks=\toks26
 \enit@inbox=\box34
 \enitdp@description=\count124
-) (./report.aux)
+) (./report.aux
+
+LaTeX Warning: Label `fig:digit' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 -- Lines per column: 56 (exact).
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -360,45 +364,103 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+<figures/u1.png, id=1, 448.67625pt x 235.88126pt>
+File: figures/u1.png Graphic file (type png)
+<use figures/u1.png>
+Package pdftex.def Info: figures/u1.png  used on input line 103.
+(pdftex.def)             Requested size: 206.39685pt x 108.50668pt.
+<figures/u4.png, id=2, 440.64626pt x 235.88126pt>
+File: figures/u4.png Graphic file (type png)
+<use figures/u4.png>
+Package pdftex.def Info: figures/u4.png  used on input line 109.
+(pdftex.def)             Requested size: 206.39685pt x 110.48628pt.
+ [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-Overfull \hbox (2.95964pt too wide) detected at line 54
-\OML/cmm/m/it/10 Rule R[] \OT1/cmr/m/n/10 :  \OML/cmm/m/it/10 if x[] is A[];  i \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 [1\OML/cmm/m/it/10 ; n\OT1/cmr/m/n/10 ] \OML/cmm/m/it/10 then Class C[] with CF[]
- []
 
-<figures/mfunc.png, id=1, 790.955pt x 408.52625pt>
-File: figures/mfunc.png Graphic file (type png)
-<use figures/mfunc.png>
-Package pdftex.def Info: figures/mfunc.png  used on input line 93.
-(pdftex.def)             Requested size: 206.39685pt x 106.6008pt.
-[1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+ <./figures/u1.png (PNG copy)> <./figures/u4.png (PNG copy)>]
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 129.
+
+LaTeX Font Info:    Calculating math sizes for size <> on input line 130.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 130.
 
 
- <./figures/mfunc.png>]
-Underfull \hbox (badness 2753) in paragraph at lines 131--133
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 130.
+
+
+LaTeX Font Warning: Command \scriptsize invalid in math mode on input line 134.
+
+
+Underfull \hbox (badness 2753) in paragraph at lines 154--156
 []\OT1/ptm/m/n/10 Then, ran-domly change the an-tecedent fuzzy set to
  []
 
-<figures/master.png, id=24, 709.90219pt x 805.50937pt>
+[2]
+<figures/master.png, id=30, 709.90219pt x 805.50937pt>
 File: figures/master.png Graphic file (type png)
 <use figures/master.png>
-Package pdftex.def Info: figures/master.png  used on input line 177.
-(pdftex.def)             Requested size: 102.05861pt x 115.79414pt.
-<figures/slave.png, id=25, 855.195pt x 779.16093pt>
+Package pdftex.def Info: figures/master.png  used on input line 198.
+(pdftex.def)             Requested size: 206.39685pt x 234.194pt.
+<figures/slave.png, id=32, 855.195pt x 779.16093pt>
 File: figures/slave.png Graphic file (type png)
 <use figures/slave.png>
-Package pdftex.def Info: figures/slave.png  used on input line 183.
-(pdftex.def)             Requested size: 102.05861pt x 92.98404pt.
-[2]
-Underfull \hbox (badness 1642) in paragraph at lines 234--235
-[]\OT1/ptm/m/n/10 Our cur-rent im-ple-men-ta-tion has in-te-grated the hy-brid
- []
-
-<figures/iris.png, id=30, 225.2415pt x 120.2091pt>
+Package pdftex.def Info: figures/slave.png  used on input line 205.
+(pdftex.def)             Requested size: 206.39685pt x 188.03679pt.
+ [3 <./figures/master.png> <./figures/slave.png>]
+<figures/iris.png, id=38, 642.4pt x 481.8pt>
 File: figures/iris.png Graphic file (type png)
 <use figures/iris.png>
-Package pdftex.def Info: figures/iris.png  used on input line 238.
-(pdftex.def)             Requested size: 206.39685pt x 110.15349pt.
-(./report.bbl)
+Package pdftex.def Info: figures/iris.png  used on input line 260.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
+File: figures/iris.png Graphic file (type png)
+<use figures/iris.png>
+Package pdftex.def Info: figures/iris.png  used on input line 265.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
+<figures/test.png, id=39, 642.4pt x 481.8pt>
+File: figures/test.png Graphic file (type png)
+<use figures/test.png>
+Package pdftex.def Info: figures/test.png  used on input line 271.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
+<figures/testData.png, id=40, 642.4pt x 481.8pt>
+File: figures/testData.png Graphic file (type png)
+<use figures/testData.png>
+Package pdftex.def Info: figures/testData.png  used on input line 276.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
+
+Underfull \vbox (badness 5667) has occurred while \output is active []
+
+ (./report.bbl [4 <./figures/iris.png> <./figures/test.png> <./figures/testData.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -410,20 +472,30 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3 <./figures/master.png> <./figures/slave.png> <./figures/iris.png (PNG copy)>] (./report.aux) ) 
+[5
+
+] (./report.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5624 strings out of 492649
- 85294 string characters out of 6129622
- 165432 words of memory out of 5000000
- 9418 multiletter control sequences out of 15000+600000
- 38853 words of font info for 77 fonts, out of 8000000 for 9000
+ 5650 strings out of 492649
+ 85619 string characters out of 6129622
+ 165491 words of memory out of 5000000
+ 9441 multiletter control sequences out of 15000+600000
+ 39534 words of font info for 80 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 42i,10n,40p,676b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (3 pages, 283166 bytes).
+ 42i,10n,40p,676b,258s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (5 pages, 298304 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

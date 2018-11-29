@@ -11,4 +11,11 @@ K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan, ``A fast and elitist
   multiobjective genetic algorithm: Nsga-ii,'' {\em IEEE Transactions on
   Evolutionary Computation}, vol.~6, pp.~182--197, April 2002.
 
+\bibitem{Iris}
+R.~Fisher, ``Iris data set,'' 1988.
+
+\bibitem{Gphase}
+R.~C.~B. Madeo, P.~K. Wagner, and S.~M. Peres, ``Gesture phase segmentation
+  data set,'' 2014.
+
 \end{thebibliography}

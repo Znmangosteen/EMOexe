@@ -24,7 +24,6 @@
   
   \hyphenation{op-tical net-works semi-conduc-tor}
   
-  
   \begin{document}
   
   \title{Parallel Distributed Multi-objective Fuzzy Genetics-based Machine Learning \\ Midterm Report}
@@ -50,11 +49,10 @@
   \section{Fuzzy Rule-based Classifiers}
   The design and implementation of fuzzy classifier is based on \cite{ishibuchi2007analysis}.
   \subsection{Fuzzy Rules}
-  We use the following "if-then" rules:
-  $$Rule\;R_q:\;if\;x_{pi}\;is\;A_{qi},\;i\in [1,n]\;then\;Class\;C_q\;with\;CF_q$$
+
 
   \begin{table}[H]
-    \caption{Notation}
+    
     \centering
       \begin{tabular}{cccc}
       \toprule
@@ -76,47 +74,72 @@
       $CF_q$&rule weight for $q$-th rule\\
   \bottomrule
   \end{tabular}
+  \caption{Notation}
   \label{table:1}
   \end{table}
-  Input vectors are normalized to a hypercube $[0,1]^n$ using the following equation:
-  $$x_{pi}=\frac{x_{pi}-min(x_{i})}{max(x_{i})-min(x_{i})}$$
+    We use the following "if-then" rules:
+\begin{equation}
+Rule\;R_q:\;if\;x_{pi}\;is\;A_{qi},\;then\;Class\;C_q\;with\;CF_q
+\end{equation}  
+Input vectors are normalized to a hypercube $[0,1]^n$ using the following equation:
+\begin{equation}x_{pi}=\frac{x_{pi}-min(x_{i})}{max(x_{i})-min(x_{i})}\end{equation}
 
   The antecedent fuzzy set contains a membership function of the form:
-  $$\mu_{A_{qi}}(x_{pi}) =max\{1-\frac{|a-x_{pi}|}
-  {b},0\}$$
-  $$a=\frac{k-1}{K-1}$$
-  $$b=\frac{1}{K-1}$$
-  Where K is the number of intervals of fuzzy set $A_{qi}$ and k is the order of the interval. As shown in fig.\ref{fig:mfunc}. The $don't\;care$ condition is a constant function with value 1. As we will discuss in classification process, the feature $x_{pi} $ with $A_{qi}$ being $don't\;care$ is ignored.
+  \begin{equation}
+    \mu_{A_{qi}}(x_{pi}) =max\{1-\frac{|a-x_{pi}|}
+  {b},0\}
+  \end{equation}
+  \begin{equation}
+    a=\frac{k-1}{K-1}
+  \end{equation}
+  \begin{equation}
+  b=\frac{1}{K-1}
+  \end{equation}
+  
+  where K is the number of intervals of fuzzy set $A_{qi}$ and k is the order of the interval. As shown in Fig.\ref{u0} and Fig.\ref{u3}. The $don't\;care$ condition is a constant function with value 1. As we will discuss in classification process, feature $x_{pi} $ with $A_{qi}$ being $don't\;care$ is ignored by rule $R_q$. 
 
   \begin{figure}[H]
-    \centering
-    \includegraphics[width = 0.4\textwidth]{figures/mfunc.png}
-    \caption{Membership functions with at most 3 intervals}
-    \label{fig:mfunc}
-  \end{figure}
+ 	\centering
+ 	\includegraphics[width=0.4\textwidth]{figures/u1.png}
+   \caption{The $don't care$ function}\label{fig:digit}
+   \label{u0}
+ \end{figure}
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.4\textwidth]{figures/u4.png}
+   \caption{Membership Functions with 4 intervals}\label{fig:digit}
+   \label{u3}
+ \end{figure}
+  The antecedent part of $R_q$ is a set of antecedent fuzzy sets:
+\begin{equation}A_q = \{A_{qi}|i = 1,2,...,n\}\end{equation}
 
-  The antecedent part of $R_q$ is a set of antecedent fuzzy sets. $$A_q = \{A_{qi}|i\in [1,n]\}$$
+  We define the compatibility grade of a pattern $x_p$ with rule $R_q$ as
+  \begin{equation}\mu_{A_q}(x_p) = \prod_{i = 1}^{n}\mu_{A_{qi}}(x_{pi})\end{equation}
 
-  We define the compatibility grade of an pattern $x_p$ with rule $R_q$ as
-  $$\mu_{A_q}(x_p) = \prod_{i = 1}^{n}\mu_{A_{qi}}(x_{pi})$$
+  The consequent class $C_q$ and rule weight $CF_q$ are decided by the training data used to generate the rule. 
+  Assume we have $m$ training patterns $x_{p} \in \{x_{p1},x_{p2},...,x_{pm}\}$ from the $M$ classes. We determine $C_q$ and $CF_q$ as follows:
 
-  Then we determine the consequent class $C_q$ and rule weight $CF_q$ using training patterns as follows:
-
-  First, we compute the confidence of fuzzy rule $R_q$ to each class $c(A_q \Rightarrow Class\;h), h \in[1,M]$
-  $$c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p)}{\sum\limits_{p=1}^m\mu_{A_q}(x_p)}$$
+  First, we compute the confidence of fuzzy rule $R_q$ to each class $c(A_q \Rightarrow Class\;h), h = 1,2,...,M$
+\begin{equation}
+c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p)}{\sum\limits_{p=1}^m\mu_{A_q}(x_p)}
+\end{equation}
 
   Then the consequent class $C_q$ as the class with which $R_q$ has the largest confidence.
-  $$c(A_q \Rightarrow Class\;C_q)=max\{c(A_q \Rightarrow Class\;h)|h \in [1,M]\}$$
+  \begin{equation}
+  \scriptsize c(A_q \Rightarrow Class\;C_q)=max\{c(A_q \Rightarrow Class\;h)|h=1,2,...,M\}
+\end{equation}
   
-  At last, rule weight of $R_q$ is given by the difference between its consequent class and other classes.
-  $$CF_q = c(A_q\Rightarrow Class\;C_q)-\sum\limits_{h=1, h\neq C_q}^{M}c(A_q\Rightarrow Class \; h)$$
+  Rule weight $CF_q$ of $R_q$ is given by the difference between its consequent class and other classes.
+  \begin{equation}
+  \scriptsize CF_q = c(A_q\Rightarrow Class\;C_q)-\sum\limits_{h=1, h\neq C_q}^{M}c(A_q\Rightarrow Class \; h)
+\end{equation}
 
-  Rule weight shows the quality of a classification result given by a fuzzy rule. If a rule has negative rule weight, its abandoned.
+  Rule weight $CF_q$  shows the quality of a classification result given by a fuzzy rule. Fuzzy rules with negative rule weight are abandoned.
   
   \subsection{Fuzzy Classifier}
   
   A fuzzy classifier $S$ is a set of fuzzy rules. Given an input pattern $x_p$, the classification result $C_w$ is produced by a winning rule $R_w$, chosen as follows:
-  $$\mu_{A_w}(x_p) \cdot CF_w = max\{\mu_{A_q}(x_p)\cdot CF_q|R_q\in S\}$$
+  \begin{equation}\mu_{A_w}(x_p) \cdot CF_w = max\{\mu_{A_q}(x_p)\cdot CF_q|R_q\in S\}\end{equation}
   \subsection{Generate Fuzzy Rule From Training Patterns}
   At the initiation stage of our GBML algorithm, the population, set of fuzzy classifiers, is created from training data. We can use certain training patterns to create a fuzzy classifier and repeat the process to create a set of classifiers.
   
@@ -125,7 +148,7 @@
     % \item
 
   We choose an antecedent fuzzy set according to each $x_{ti}$ and form the antecedent part $A_t$ of rule $R_t$ so that $x_{t}$ has the largest compatibility:
-  $$ \A_{ti} = \underset{\mu_j}{\arg\max}\{\mu_{j}(x_{ti})\},j \in [1,I]$$
+  \begin{equation} \A_{ti} = \underset{\mu_j}{\arg\max}\{\mu_{j}(x_{ti})\},j=1,2,...,I\end{equation}
     % \item 
   
   Then, randomly change the antecedent fuzzy set to $dont't\;care$ according to a pre-specified probability $p_{dc}$. This step prevents overfitting and improves generalizing ability of fuzzy rules.
@@ -167,27 +190,25 @@
   
    
   \section{Asynchronous Parallel Distributed System Design}
-  We propose an asynchronous parallel distributed system as shown in fig.\ref{fig:fig} to accelerate our GBML algorithm. The model includes 3 parts: dataset distributor, local island worker and population migration control. (For convenience, slave process are referred to as island in this report)
+  We propose an asynchronous parallel distributed system to accelerate our GBML algorithm. 
 
-  
-    \begin{figure}[H]
+
+  \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\linewidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{figures/master.png}
-      \caption{Master process}
-      \label{fig:sfig1}
-    \end{subfigure}%
-    \begin{subfigure}{0.45\linewidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{figures/slave.png}
-      \caption{Slave process}
-      \label{fig:sfig2}
-    \end{subfigure}
-    
-    \caption{Master-slave Design}
-    \label{fig:fig}
-    \end{figure}
+    \includegraphics[width = 0.4\textwidth]{figures/master.png}
+    \caption{The master process}
+    \label{fig:master}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.4\textwidth]{figures/slave.png}
+    \caption{The slave process}
+    \label{fig:slave}
+  \end{figure}
+  
+  As shown in Fig.\ref{fig:master} and Fig.\ref{fig:slave}, the model includes 3 parts: dataset distributor, local island worker and population migration control. (For convenience, slave process are referred to as island in this report)
+   
   \subsection{Master and Slave process}
   \subsubsection{Master Process}
   
@@ -231,15 +252,33 @@
   
   \section{Computational Experiments}
 
-	 Our current implementation has integrated the hybrid GBML framework and the fuzzy rule-based classifier. Feasibility test is done on the Iris Flower dataset. The result is as follows:
+	 Our current implementation has integrated a two-objective hybrid GBML framework and the fuzzy rule-based classifier. Feasibility test is done on the Iris Flower\cite{Iris} and Gesture Phase dataset\cite{Gphase}. 
 
+   As is shown by Fig.\ref{irisTr} and Fig.\ref{irisT}, the performance on Iris Flowers, which has 4 attributes and 150 instances, is good.
  \begin{figure}[H]
  	\centering
  	\includegraphics[width=0.4\textwidth]{figures/iris.png}
- 	\caption{Pareto front obtained on Iris Flowers}\label{fig:digit}
+ 	\caption{Performance on training data using Iris Flowers}\label{irisTr}
  \end{figure}
-
- We will fix bugs (if any) of the fuzzy GBML algorithm and then integrate the algorithm into our proposed asynchronous parallel framework. 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.4\textwidth]{figures/iris.png}
+ 	\caption{Performance on training data using Iris Flowers}\label{irisT}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.4\textwidth]{figures/test.png}
+ 	\caption{Performance on test data using Gesture Phase}\label{phTr}
+ \end{figure}
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.4\textwidth]{figures/testData.png}
+ 	\caption{Performance on test data using Gesture Phase}\label{phT}
+ \end{figure}
+However, we observe significant performance drop on the Gesture Phase data set as is shown by Fig.\ref{phTr} and Fig.\ref{phT}. The dataset has 32 attributes and 1743 instances.
+ \section{Conclusion}
+ Currently we have implemented a fuzzy rule-based classifier in a two-objective hybrid GBML framework. We will fix bugs (if any) of the fuzzy GBML algorithm, bring in another objective and integrate the algorithm into our proposed asynchronous parallel system in the final stage of this project. 
 
   \section{Contribution}
   
