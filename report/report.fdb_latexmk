@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex report"] 1543480564 "report.aux" "report.bbl" "report" 1543480733
+["bibtex report"] 1543480564 "report.aux" "report.bbl" "report" 1543482117
   "/usr/local/texlive/2018/texmf-dist/bibtex/bst/base/ieeetr.bst" 1480098433 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
   "ref.bib" 1543479688 3497 74b8d790e1a3e892b802bdeeb625c6f7 ""
-  "report.aux" 1543480732 3959 1d1b43b202d2d8dfb6a94150a53f62c9 ""
+  "report.aux" 1543482116 3959 1d1b43b202d2d8dfb6a94150a53f62c9 ""
   (generated)
-  "report.bbl"
   "report.blg"
-["pdflatex"] 1543480731 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543480733
-  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543480731 15621 351f321761a25ab08b4098b1c13e13dd ""
+  "report.bbl"
+["pdflatex"] 1543482115 "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" "report.pdf" "report" 1543482117
+  "/Users/chenshijie/Documents/GitHub/EMOexe/report/report.tex" 1543482115 15625 aaa0c5e0398a09b5589f0673c18b7e4b ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -100,17 +100,18 @@
   "IEEEtran.cls" 1543369009 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "algorithmicx.sty" 1543369009 26750 ce139c05a983e19ddca355b43e29c395 ""
   "algpseudocode.sty" 1543369009 3457 d9077efe6b74c5a094199256af8d7d9a ""
-  "figures/iris.png" 1543467649 3617 55bf57e5866002a7c6dcb4b7cfd60818 ""
+  "figures/iris.png" 1543481086 4264 84ca01b8c2d406f90550ac6ddcf54866 ""
+  "figures/irisTest.png" 1543481136 4189 1fe0bdfc8b3df9d90d163433c3ccee3f ""
   "figures/master.png" 1543426038 4043742 de41d0a51cfdaf642ac051dcf343ba1e ""
   "figures/slave.png" 1543452781 4711791 826beb685a2d8501a8170bb6b18db042 ""
   "figures/test.png" 1543478664 4370 32548701671a9399d3687ef018042875 ""
   "figures/testData.png" 1543478664 3989 bdf77fc9e442fc05c6acfae3179c647e ""
   "figures/u1.png" 1543471611 5650 be2113724818050673092db3d6b9c53b ""
   "figures/u4.png" 1543471611 21069 289f154dbaa8a405fd203e40d70e05c8 ""
-  "report.aux" 1543480732 3959 1d1b43b202d2d8dfb6a94150a53f62c9 ""
+  "report.aux" 1543482116 3959 1d1b43b202d2d8dfb6a94150a53f62c9 ""
   "report.bbl" 1543480564 719 96ef8706663af0970c59c6945bb5d370 "bibtex report"
-  "report.tex" 1543480731 15621 351f321761a25ab08b4098b1c13e13dd ""
+  "report.tex" 1543482115 15625 aaa0c5e0398a09b5589f0673c18b7e4b ""
   (generated)
-  "report.log"
-  "report.pdf"
   "report.aux"
+  "report.pdf"
+  "report.log"

@@ -185,8 +185,9 @@ INPUT ./figures/slave.png
 INPUT figures/iris.png
 INPUT ./figures/iris.png
 INPUT ./figures/iris.png
-INPUT figures/iris.png
-INPUT ./figures/iris.png
+INPUT figures/irisTest.png
+INPUT ./figures/irisTest.png
+INPUT ./figures/irisTest.png
 INPUT figures/test.png
 INPUT ./figures/test.png
 INPUT ./figures/test.png
