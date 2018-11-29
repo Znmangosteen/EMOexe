@@ -103,6 +103,8 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT report.aux
 INPUT report.aux
 OUTPUT report.aux
