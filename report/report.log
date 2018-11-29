@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.17)  29 NOV 2018 02:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.9.17)  29 NOV 2018 08:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,27 +374,22 @@ Underfull \hbox (badness 2753) in paragraph at lines 128--130
 <figures/master.png, id=24, 709.90219pt x 805.50937pt>
 File: figures/master.png Graphic file (type png)
 <use figures/master.png>
-Package pdftex.def Info: figures/master.png  used on input line 176.
+Package pdftex.def Info: figures/master.png  used on input line 174.
 (pdftex.def)             Requested size: 102.05861pt x 115.79414pt.
 <figures/slave.png, id=25, 822.82407pt x 752.0597pt>
 File: figures/slave.png Graphic file (type png)
 <use figures/slave.png>
-Package pdftex.def Info: figures/slave.png  used on input line 182.
+Package pdftex.def Info: figures/slave.png  used on input line 180.
 (pdftex.def)             Requested size: 102.05861pt x 93.2728pt.
 [2]
-Underfull \hbox (badness 2653) in paragraph at lines 197--198
-[]\OT1/ptm/m/n/10 Listening each is-land, ex-change(migrate) pop-u-la-tion
- []
-
-
-Underfull \hbox (badness 1642) in paragraph at lines 229--230
+Underfull \hbox (badness 1642) in paragraph at lines 227--228
 []\OT1/ptm/m/n/10 Our cur-rent im-ple-men-ta-tion has in-te-grated the hy-brid
  []
 
 <figures/iris.png, id=30, 225.2415pt x 120.2091pt>
 File: figures/iris.png Graphic file (type png)
 <use figures/iris.png>
-Package pdftex.def Info: figures/iris.png  used on input line 233.
+Package pdftex.def Info: figures/iris.png  used on input line 231.
 (pdftex.def)             Requested size: 206.39685pt x 110.15349pt.
 (./report.bbl)
 
@@ -418,7 +413,7 @@ Here is how much of TeX's memory you used:
  1144 hyphenation exceptions out of 8191
  42i,10n,40p,676b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (3 pages, 280603 bytes).
+Output written on report.pdf (3 pages, 280532 bytes).
 PDF statistics:
  87 PDF objects out of 1000 (max. 8388607)
  58 compressed objects within 1 object stream
