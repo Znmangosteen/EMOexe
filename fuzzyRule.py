@@ -147,9 +147,9 @@ class fuzzy_rule:
             return False
 
 
-data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")
-pData = 0.1  # proportion of training data
-N = int(pData * len(data))
+# data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")
+# pData = 0.1  # proportion of training data
+# N = int(pData * len(data))
 
 # print("train: ",len(trainingData))
 # print("test: ",len(testData))
@@ -162,22 +162,22 @@ N = int(pData * len(data))
 # for rule in RS.rules:
 #   print(rule.rule," Cq:",rule.Cq, " CFq:",rule.CFq)
 
-nRight = 0
-accuracy = 0
+# nRight = 0
+# accuracy = 0
 # for i in range(10):
 
 # accuracy += nRight/(len(testData)*10)
 # print("accuracy: ", accuracy)
-trainingData = []
-testData = []
-random.shuffle(data)
-trainingData = data[:N]
-testData = data
-rule = fuzzy_rule(trainingData[0], trainingData)
-RS = rule_set(trainingData)
-index = random.randint(0, len(trainingData) - 1)
-xp = trainingData[index]
-nRight = 0
+# trainingData = []
+# testData = []
+# random.shuffle(data)
+# trainingData = data[:N]
+# testData = data
+# rule = fuzzy_rule(trainingData[0], trainingData)
+# RS = rule_set(trainingData)
+# index = random.randint(0, len(trainingData) - 1)
+# xp = trainingData[index]
+# nRight = 0
 # for data2 in testData:
 #     xp = data2[:-1]
 #     result = RS.classify(xp)

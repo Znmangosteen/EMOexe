@@ -1,4 +1,4 @@
-import random, exer4
+import random
 from fuzzyRule import fuzzy_rule
 
 

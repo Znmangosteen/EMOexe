@@ -1,5 +1,5 @@
 from fuzzyRule import fuzzy_rule
-import random, exer4
+import random
 
 
 def rule_mutation(c: list):

@@ -1,9 +1,9 @@
 import init, algorithm, util, random, time
 import fuzzyRule
 
-data, NClass, dictL2I, dictI2L = util.readData("./data/a1_va3.csv")
-# data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")
-pData = 0.3  # proportion of training data
+# data, NClass, dictL2I, dictI2L = util.readData("./data/a1_va3.csv")
+data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")
+pData = 0.4  # proportion of training data
 N = int(pData * len(data))
 random.shuffle(data)
 trainingData = data[:N]
@@ -11,7 +11,7 @@ testData = data
 
 if __name__ == '__main__':
     # 初期个体数
-    size = 50
+    size = 150
     gen_num = 20
     # size = 20
     # gen_num = 1
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     population = []
     while len(population) < size:
         # use_data = random.randint(1, 15)
-        use_data = 200
+        use_data = 20
         init_trainingData_idx = random.sample(range(0, len(trainingData)), use_data)
         init_trainingData = []
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         time_start = time.time()
         print("start")
         pareto_set, population = algorithm.NSGAII(population=population, p=p, gen_num=gen_num, constant=constant,
-                                                  size=size)
+                                                  size=size,trainingData=trainingData)
 
         time_end = time.time()
         time_cost = time_end - time_start

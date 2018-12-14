@@ -1,7 +1,7 @@
-import crossover, mutation, selection, random, init, copy, exer4
+import crossover, mutation, selection, random, init, copy
 
 
-def NSGAII(population, p, gen_num, constant, size=100) -> list:
+def NSGAII(population, p, gen_num, constant, trainingData, size=100) -> list:
     pc = p[0]
     pm = p[1]
     pMchi = p[2]
@@ -36,14 +36,14 @@ def NSGAII(population, p, gen_num, constant, size=100) -> list:
             #     child = mutation.rule_set_mutation(child)
 
             # c.rules = child
-            child.getFitness(exer4.trainingData)
+            child.getFitness(trainingData)
 
             if random.random() < pMchi:
-                child = michigan(child, N, p[3:5])
+                child = michigan(child, N, p[3:5], trainingData)
             # print("Michigan over")
 
             # c.rules = child
-            child.getFitness(exer4.trainingData)
+            child.getFitness(trainingData)
 
             offspring_population.append(child)
             # print("added")
@@ -157,7 +157,7 @@ def crowding_measure(I: list):
         I[i].distance += (I[i + 1].fitness2 - I[i - 1].fitness2) / total_length
 
 
-def michigan(population, N, p):
+def michigan(population, N, p, trainingData):
     '''
 
     :param population: a fuzzy rule set
@@ -194,7 +194,7 @@ def michigan(population, N, p):
         child_rule = mutation.rule_mutation(child_rule)
 
     p1.rule = child_rule
-    p1.Cq, p1.CFq = p1.getCqCFq(child_rule, exer4.trainingData)
+    p1.Cq, p1.CFq = p1.getCqCFq(child_rule, trainingData)
 
     population.rules[-1] = p1
 

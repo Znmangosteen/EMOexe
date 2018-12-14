@@ -4,7 +4,7 @@ import random, util
 
 class DataReader(object):
     def __init__(self):
-        data, NClass, dictL2I, dictI2L = util.readData("./data/a1_va3.csv")
+        data, NClass, dictL2I, dictI2L = util.readData("../data/a1_va3.csv")
         # data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")
         pData = 0.3  # proportion of training data
         N = int(pData * len(data))
@@ -14,6 +14,9 @@ class DataReader(object):
 
     def getTrainingData(self):
         return self.trainingData
+
+    def getTestData(self):
+        return self.testData
 
     def get_iris_data(self):
         data = []
