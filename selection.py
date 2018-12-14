@@ -1,5 +1,4 @@
-import random
-from fuzzyRule import fuzzy_rule
+import random, copy
 
 
 def binary_tournament_selection(front: list):
@@ -19,13 +18,13 @@ def binary_tournament_selection(front: list):
             solution1 = front[i]
             solution2 = front[j]
 
-            flag = solution1 < solution2
+            flag = solution1.compare(solution2)
 
-            if flag == -1:
-                result = solution1
-            elif flag == 1:
-                result = solution2
+            if flag:
+                result = copy.deepcopy(solution1)
             else:
-                result = [solution1, solution2][random.random() < 0.5]
+                result = copy.deepcopy(solution2)
+            # else:
+            #     result = [copy.deepcopy(solution1), copy.deepcopy(solution2)][random.random() < 0.5]
             results.append(result)
     return results

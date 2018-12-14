@@ -11,6 +11,7 @@ class rule_set:
     fitness = 0
     fitness2 = 0
     correct_num = 0
+    distance = 0
 
     def __lt__(self, other):
         if self.pareto > other.pareto:
@@ -34,9 +35,11 @@ class rule_set:
             rule = self.rules[i]
             score = (fuzzy_rule.getCompGrade(rule.rule, xp)) * rule.CFq
             scores.append([rule.Cq, score, i])
-        scores.sort(key=lambda x: x[1], reverse=True)
         # print(scores[0])
         # print("-----------")
+        # print(xp)
+        # print(scores)
+        scores.sort(key=lambda x: x[1], reverse=True)
         return scores[0][0], scores[0][2]
 
         pass
@@ -46,6 +49,7 @@ class rule_set:
         hit = [0] * len(self.rules)
         for data in testData:
             result, index = self.classify(data)
+            # print(result, index)
             if (result == data[-1]):
                 fitness += 1
                 hit[index] += 1
@@ -57,9 +61,15 @@ class rule_set:
             self.rules[i].fitness = hit[i]
         return self.fitness / len(testData)
 
+    def compare(self, other):
+        if self.pareto < other.pareto:
+            return True
+        else:
+            return False
+
 
 class fuzzy_rule:
-    pDC = 0  # probablity of don't care
+    pDC = 0.85  # probablity of don't care
     rule = []
     Cq = 0
     CFq = 0
@@ -129,6 +139,12 @@ class fuzzy_rule:
     def prints(self, list):
         for i in list:
             print(i)
+
+    def compare(self, other):
+        if self.fitness > other.fitness:
+            return True
+        else:
+            return False
 
 
 data, NClass, dictL2I, dictI2L = util.readData("./data/iris.dat")

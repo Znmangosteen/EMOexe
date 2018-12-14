@@ -51,5 +51,5 @@ def readData(path):
 
 
 
-path = "./data/iris.dat"
-readData(path)
+# path = "./data/iris.dat"
+# readData(path)
