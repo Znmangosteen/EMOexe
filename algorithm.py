@@ -12,7 +12,7 @@ def NSGAII(population, p, gen_num, constant, trainingData, size=100) -> list:
         print("gen_num:" + str(j))
         offspring_population = []
         pareto_ranking(population)
-        print("ranked")
+        # print("ranked")
         # 生成子代个体并放到offspring_population
         for i in range(size):
             # print("i th: " + str(i))
@@ -48,14 +48,14 @@ def NSGAII(population, p, gen_num, constant, trainingData, size=100) -> list:
             offspring_population.append(child)
             # print("added")
             # print()
-        print("offspring generated")
+        # print("offspring generated")
 
         # 合并父子代并选择
         population = merge_and_select(population, offspring_population, size)
-        print("re-ranked")
+        # print("re-ranked")
 
     pareto_ranking(population)
-    print("final ranked")
+    # print("final ranked")
     print()
 
     '''
@@ -84,7 +84,7 @@ def merge_and_select(population: list, offspring_population: list, size):
     end = size
     while total_population[start - 1].pareto == dividing_pareto and start > 0:
         start -= 1
-    while total_population[end].pareto == dividing_pareto and start < 2 * size:
+    while total_population[end].pareto == dividing_pareto and end < 2 * size-1:
         end += 1
 
     re_sort_pop = total_population[start:end]
@@ -147,15 +147,16 @@ def crowding_measure(I: list):
     total_length = I[-1].fitness - I[0].fitness
 
     for i in range(1, len(I) - 1):
-        I[i].distance += (I[i + 1].fitness - I[i - 1].fitness) / total_length
+        if total_length != 0:
+            I[i].distance += (I[i + 1].fitness - I[i - 1].fitness) / total_length
 
     I.sort(key=lambda x: x.fitness2, reverse=False)
     I[0].distance = 5
     I[len(I) - 1].distance = 5
     total_length = I[-1].fitness2 - I[0].fitness2
     for i in range(1, len(I) - 1):
-        I[i].distance += (I[i + 1].fitness2 - I[i - 1].fitness2) / total_length
-
+        if total_length != 0:
+            I[i].distance += (I[i + 1].fitness2 - I[i - 1].fitness2) / total_length
 
 def michigan(population, N, p, trainingData):
     '''

@@ -1,6 +1,6 @@
 import multiprocessing as mp
 import threading
-import algorithm, fuzzyRule
+import algorithm, fuzzyRule, time
 
 from parallel.data_distributor import DataDistributor
 from parallel.data_reader import DataReader
@@ -53,6 +53,8 @@ if __name__ == '__main__':
     distributor = DataDistributor(CPU_NUM)
     popPool = PopPool()
     listen_lock = threading.RLock()
+    each_gen = 50
+    total_time = 12
 
     distributor.set_dataset(reader.getTrainingData())
     datasets = distributor.partition()
@@ -62,7 +64,7 @@ if __name__ == '__main__':
     lisen_threads = []
     for i in range(CPU_NUM):
         parent_conn, child_conn = mp.Pipe()
-        worker = mp.Process(target=run, args=(datasets[i], child_conn, 150, 5, 20, 1))
+        worker = mp.Process(target=run, args=(datasets[i], child_conn, 12, 5, each_gen, total_time))
         lisener = threading.Thread(target=lisen, args=(parent_conn,))
         init_worker.append(worker)
         lisen_threads.append(lisener)
@@ -74,9 +76,11 @@ if __name__ == '__main__':
     pops = []
     for conn in pipe_conns:
         pop = conn.recv()
-        pops.append(pop)
+        pops.extend(pop)
 
     popPool.init_pool(pops)
+
+    start = time.time()
 
     # run main part
     for lisen_thread in lisen_threads:
@@ -96,6 +100,11 @@ if __name__ == '__main__':
         RS.getFitness(train_data)
 
     algorithm.pareto_ranking(fin_pop)
+
+    time_cost = time.time() - start
+    print('time cost: ' + str(time_cost))
+    each_time = time_cost / 200
+    print('time each gen: ' + str(each_time))
 
     pareto_set = []
     for RS in fin_pop:

@@ -6,11 +6,12 @@ from parallel.data_reader import DataReader
 class DataDistributor(object):
     def __init__(self, worker_num, dataset=[]):
         self.worker_num = worker_num
-        self.dataset = pd.Series(dataset)
+        # self.dataset = pd.Series(dataset)
+        self.dataset = []
         self.data_size = len(dataset)
 
     def set_dataset(self, dataset: list):
-        self.dataset = pd.Series(dataset)
+        self.dataset = dataset
         self.data_size = len(dataset)
 
     def partition(self, amount=None):
