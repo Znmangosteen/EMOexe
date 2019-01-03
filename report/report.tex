@@ -26,7 +26,7 @@
   
   \begin{document}
   
-  \title{Parallel Distributed Multi-objective Fuzzy Genetics-based Machine Learning \\ Midterm Report}
+  \title{Parallel Distributed Multi-objective Fuzzy Genetics-based Machine Learning \\ Final Report}
   
   \author{\IEEEauthorblockN{Bowen Zheng, Shijie Chen, Shuxin Wang}
   \IEEEauthorblockA{Department of Computer Science and Engineering\\
@@ -37,7 +37,7 @@
   \maketitle
   
   \begin{abstract}
-  In the second period of the project, we finished the design of fuzzy classifiers, GBML framework and the asynchronous parallel distributed system. We have implemented each part respectively and are working to integrate them together.
+  In this project, we finished an asynchronous parallel implementation of a 3-objective fuzzy GBML classifier. It's composed of a fuzzy-rule based classifier, a genetics based optimization framework and an asynchronous parallel scheme. Compared to non-parallel implementation, our model could obtain reasonable results with significantly reduced computation time. Our model is also about 10\% faster than prior synchronized model of similar performance.
   \end{abstract}
   \IEEEpeerreviewmaketitle
   
@@ -252,31 +252,38 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
   
   \section{Computational Experiments}
 
-	 Our current implementation has integrated a two-objective hybrid GBML framework and the fuzzy rule-based classifier. Feasibility test is done on the Iris Flower\cite{Iris} and Gesture Phase dataset\cite{Gphase}. 
-
-   As is shown by Fig.\ref{irisTr} and Fig.\ref{irisT}, the performance on Iris Flowers, which has 4 attributes and 150 instances, is good.
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.4\textwidth]{figures/iris.png}
- 	\caption{Performance on training data using Iris Flowers}\label{irisTr}
- \end{figure}
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.4\textwidth]{figures/irisTest.png}
- 	\caption{Performance on training data using Iris Flowers}\label{irisT}
- \end{figure}
- 
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.4\textwidth]{figures/test.png}
- 	\caption{Performance on test data using Gesture Phase}\label{phTr}
- \end{figure}
+	 We tested our model in both 2 and 3 objectives and compared the results with non-parallel model and the synchronized parallel implementation\cite{nojima2015application}. Experiments are conducted on Gesture Phase Segmentation dataset\cite{Gphase} (32 attributes, 1743 attributes).
+  \subsection{Pareto Front}
+   
   \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.4\textwidth]{figures/testData.png}
- 	\caption{Performance on test data using Gesture Phase}\label{phT}
- \end{figure}
-However, we observe significant performance drop on the Gesture Phase data set as is shown by Fig.\ref{phTr} and Fig.\ref{phT}. The dataset has 32 attributes and 1743 instances.
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/diffCoreTrain.png}
+    \caption{Pareto Front on training data}\label{diffCoreTr}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/diffCoreTest.png}
+    \caption{Pareto Front on test data}\label{diffCoreT}
+  \end{figure}
+  As is shown by Fig.\ref{diffCoreTr} and Fig.\ref{diffCoreT}, our model is able to get results that is similar to non-parallel models. Note that with the increase of the number of cores, the ability of the model to obtain classifiers with more rules and antecedent fuzzy sets is decreasing, due to the decrease of sub-population. It's acceptable since our objective is to minimize the two objectives.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/diffGenTrain.png}
+    \caption{Performance on test data using Gesture Phase}\label{phTr}
+  \end{figure}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figures/diffGenTest.png}
+    \caption{Performance on test data using Gesture Phase}\label{phTr}
+  \end{figure}
+  However, we observe significant performance drop on the Gesture Phase data set as is shown by Fig.\ref{phTr} and Fig.\ref{phT}. The dataset has 32 attributes and 1743 instances.
+\subsection{Computation Time}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/diffModelTime.png}
+  \caption{Performance on test data using Gesture Phase}\label{phT}
+\end{figure}
+
  \section{Conclusion}
  Currently we have implemented a fuzzy rule-based classifier in a two-objective hybrid GBML framework. We will fix bugs (if any) of the fuzzy GBML algorithm, bring in another objective and integrate the algorithm into our proposed asynchronous parallel system in the final stage of this project. 
 

@@ -11,8 +11,11 @@ K.~Deb, A.~Pratap, S.~Agarwal, and T.~Meyarivan, ``A fast and elitist
   multiobjective genetic algorithm: Nsga-ii,'' {\em IEEE Transactions on
   Evolutionary Computation}, vol.~6, pp.~182--197, April 2002.
 
-\bibitem{Iris}
-R.~Fisher, ``Iris data set,'' 1988.
+\bibitem{nojima2015application}
+Y.~Nojima, Y.~Takahashi, and H.~Ishibuchi, ``Application of parallel
+  distributed implementation to multiobjective fuzzy genetics-based machine
+  learning,'' in {\em Asian Conference on Intelligent Information and Database
+  Systems}, pp.~462--471, Springer, 2015.
 
 \bibitem{Gphase}
 R.~C.~B. Madeo, P.~K. Wagner, and S.~M. Peres, ``Gesture phase segmentation
