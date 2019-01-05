@@ -9,11 +9,11 @@
   \usepackage{cite}
   \usepackage{complexity}
   \usepackage{algpseudocode}
-   \usepackage{graphicx}
-   \usepackage{enumerate}
-   \usepackage{subcaption}
-   \usepackage[shortlabels]{enumitem}
-
+  \usepackage{graphicx}
+  \usepackage{enumerate}
+  \usepackage{subcaption}
+  \usepackage[shortlabels]{enumitem}
+  \usepackage{enumitem}
 
 % \usepackage{algorithm}
   \ifCLASSINFOpdf
@@ -42,11 +42,12 @@
   \IEEEpeerreviewmaketitle
   
   \section{Introduction}
+  Evolutionary computation is widely used for optimization problems. 
+  
   In this project, we aim to build a parallel distributed implementation of a multi-objective genetics based machine learning(GBML) algorithm. We choose a specific problem of a three-objective fuzzy rule-based classifier and fit it into a hybrid GBML framework. Then we develop a parallel mechanism to accelerate computation.
 
-  Code of the three parts have been completed. We will integrate them together, fix bugs and run some test problems in the next stage.
-
-  \section{Fuzzy Rule-based Classifiers}
+  \section{Preliminary}
+  \subsection{Fuzzy Rule-based Classifiers}
   The design and implementation of fuzzy classifier is based on \cite{ishibuchi2007analysis}.
 
   \begin{table}[H]
@@ -80,7 +81,7 @@
   \label{table:1}
   \end{table}
 
-  \subsection{Fuzzy Rules}
+  \subsubsection{Fuzzy Rules}
     We use the following "if-then" rules:
 \begin{equation}
 Rule\;R_q:\;if\;x_{pi}\;is\;A_{qi},\;then\;Class\;C_q\;with\;CF_q
@@ -140,11 +141,11 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
 
   Rule weight $CF_q$  shows the quality of a classification result given by a fuzzy rule. Fuzzy rules with negative rule weight are abandoned.
   
-  \subsection{Fuzzy Classifier}
+  \subsubsection{Fuzzy Classifier}
   
   A fuzzy classifier $S$ is a set of fuzzy rules. Given an input pattern $x_p$, the classification result $C_w$ is produced by a winning rule $R_w$, chosen as follows:
   \begin{equation}\mu_{A_w}(x_p) \cdot CF_w = max\{\mu_{A_q}(x_p)\cdot CF_q|R_q\in S\}\end{equation}
-  \subsection{Generate Fuzzy Rule From Training Patterns}
+  \subsubsection{Generate Fuzzy Rule From Training Patterns}
   At the initiation stage of our GBML algorithm, the population, set of fuzzy classifiers, is created from training data. We can use certain training patterns to create a fuzzy classifier and repeat the process to create a set of classifiers.
   
   Each rule $R_t$ in each classifier is generated from a training pattern $x_t$ as follows:
@@ -157,23 +158,23 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
   
   Then, randomly change the antecedent fuzzy set to $dont't\;care$ according to a pre-specified probability $p_{dc}$. This step prevents overfitting and improves generalizing ability of fuzzy rules.
 % \end{itemize}
-  \section{Hybrid Genetics-based Machine Learning Framework}
+  \subsection{Hybrid Genetics-based Machine Learning Framework}
   After designing the fuzzy classifier, the next step is to approach our three objectives: maximizing number of correctly classified training patterns, minimizing number of fuzzy rules and minimizing total number of antecedent conditions in the fuzzy classifier S. Our current implementation only consider first two objectives.
 	 
-	 We use a hybrid GBML algorithm to find the non-dominated rule sets. The genetic algorithm we used is based on \cite{ishibuchi2007analysis}. This hybrid GBML is implemented in the framework of non-dominated sorting genetic algorithm II(NSGA-II) and it's a Pittsburgh-style algorithm. Besides,it use Michigan-style GBML to change a rule as the mutation operation. 
+  We use a hybrid GBML algorithm to find the non-dominated rule sets. The genetic algorithm we used is based on \cite{ishibuchi2007analysis}. This hybrid GBML is implemented in the framework of non-dominated sorting genetic algorithm II(NSGA-II) and it's a Pittsburgh-style algorithm. Besides,it use Michigan-style GBML to change a rule as the mutation operation. 
 	 
   In our genetic algorithm, the population is a set of fuzzy classifiers, and each individual is a single fuzzy classifier. The basic steps of our algorithm are:
-  \begin{enumerate}
+  \begin{enumerate}[label=\alph*)]
   \item Initialize the population with size $N_{pop}$ using training data.
   \item Generate $N_{pop}$ offsprings by crossover operation. Then apply mutation on the offsprings.
   \item Combine the original population and offsprings and keep the best $N_{pop}$ individuals according to Pareto ranking and crowding measure.
-  \item Repeat 2) and 3) until the stopping criterion is met.
+  \item Repeat b) and c) until the stopping criterion is met.
   \end{enumerate}
   
 	 
-	 \subsection{NSGA-II}
+	 \subsubsection{NSGA-II}
 	 
-   NSGA-II, which is a common algorithm for multi-objective optimizing problems, is introduced in detail in \cite{996017}. Compared to ordinary genetic algorithms, it uses elite-preserving, Pareto ranking, and crowding measure to control the population. Elite-preserving is a strategy that we keep the individuals with the best performance in each iteration. Pareto ranking and crowding measure are used for non-dominated sorting in the three-objective situation. Individuals are ranked by Pareto-ranking first. If two individuals have the same Pareto-ranking, on with lower crowding measure is preferred.
+   NSGA-II, which is a common algorithm for multi-objective optimizing problems, is introduced in detail in \cite{996017}. Compared to ordinary genetic algorithms, it uses elite-preserving, Pareto ranking, and crowding measure to control the population. Elite-preserving is a strategy that keeps the individuals with the best performance in each iteration. Pareto ranking and crowding measure are used for non-dominated sorting in the three-objective situation. Individuals are ranked by Pareto-ranking first. If two individuals have the same Pareto-ranking, on with lower crowding measure is preferred.
    
 	 \subsubsection{Elite-preserving}
 	 
@@ -187,7 +188,7 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
 	 
 	 Crowding measure is used to find a more evenly distributed Pareto set and maintain the diversity of the population. This will enhance the algorithm's ability to escape local optimal. An individual's crowding measure is computed as the sum of its distances to its neighboring vectors on both positive and negative directions for each objective. Priority is given to individuals with larger crowding measure.
 	 
-	 \subsection{Michigan-style GBML}
+	 \subsubsection{Michigan-style GBML}
 	 
    Different from the Pittsburgh-style algorithm, Michigan-style GBML sees a single fuzzy rule as the population and sees the membership function as an individual. We use Michigan-style GBML as a mutation operator acting on a single rule to add diversity to the population. 
    
@@ -216,7 +217,7 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
   \subsection{Master and Slave process}
   \subsubsection{Master Process}
   
-  \begin{enumerate}[leftmargin=4\parindent]
+  \begin{enumerate}[leftmargin=4\parindent,label = \alph*)]
     \item Read dataset and initialize the dataset pool
     \item Distribute $N_{land}$ samples to each island through dataset distributor layer.
     \item Start P slave processes. Each works on a cpu core.
@@ -229,7 +230,7 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
   \subsubsection{Slave Processes}\mbox{}
   
   Init:
-  \begin{enumerate}[leftmargin =4\parindent]
+  \begin{enumerate}[leftmargin =4\parindent,label = \alph*)]
   \item Receive training dataset from the master process.
   \item Initialize population from the dataset.
   \item Run the GBML for $I_{init}$ iterations.
@@ -237,7 +238,7 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
   \end{enumerate}
 
   Main:
-  \begin{enumerate}[leftmargin=4\parindent]
+  \begin{enumerate}[leftmargin=4\parindent,label = \alph*)]
   \item Run the GBML for $I_{update}$ iterations.
   \item Upload the population to the master process and wait for the new population from migration control layer.
   \item Terminates if stopping criterion is met and sent a stopping message to the master process.
@@ -261,70 +262,166 @@ c(A_q \Rightarrow Class\; h) = \frac{\sum\limits_{x_p \in Class\;h}\mu_{A_q}(x_p
    
   \subsection{Pareto Front}
   \subsubsection{With different cores}
-As is shown by Fig.\ref{diffCoreTr} and Fig.\ref{diffCoreT} ($I_{update} = 100, N_{total} = 264$), our model is able to get results that is similar to non-parallel models. Note that with the increase of the number of cores, the ability of the model to obtain classifiers with more rules and antecedent fuzzy sets is decreasing, due to the decrease of sub-population. It's acceptable since our objective is to minimize the two objectives.
+As is shown by Fig.\ref{diffCoreTr} and Fig.\ref{diffCoreT} ($I_{update} = 100, N_{total} = 264$, 3000 generations in total), our model is able to get results that is similar to non-parallel models. Note that with the increase of the number of cores, the ability of the model to obtain classifiers with more rules and antecedent fuzzy sets is decreasing, due to the decrease of sub-population. It's acceptable since our objective is to minimize the two objectives.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.38\textwidth]{figures/diffCoreTrain.png}
-    \caption{Pareto Front on training data}\label{diffCoreTr}
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffCoreTrain1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffCoreTrain2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffCoreTrain3.png}
+  
+    \end{minipage}
+      \caption{Pareto Front on training data using different number of cores.}
+    \label{diffCoreTr}
   \end{figure}
+
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.38\textwidth]{figures/diffCoreTest.png}
-    \caption{Pareto Front on test data}\label{diffCoreT}
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffCoreTest1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffCoreTest2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffCoreTest3.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \caption{Pareto Front on test data using different number of cores}
+    \label{diffCoreT}
   \end{figure}
   
   
   
   \subsubsection{With different exchange interval}
-  We can see from Fig.\ref{diffGenTr}, Fig.\ref{diffGenT} and Fig.\ref{diffTimeGen} ($N_{total} = 264, N_{island} = 8$) that the choice of exchange interval also impacts the performance of our model. A longer exchange interval leads to less communication between master and slave processes, thus reduces running time. 
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/diffGenTrain.png}
-    \caption{Pareto Front on training data with different $I_{update}$}\label{diffGenTr}
-  \end{figure}
-  \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{figures/diffGenTest.png}
-    \caption{Pareto Front on training data with different $I_{update}$}\label{diffGenT}
-  \end{figure}
+ 
 
   \begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffGenTrain1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.95\textwidth]{figures/diffGenTrain2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.95\textwidth]{figures/diffGenTrain3.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \caption{Pareto Front on training data with different exchange invertal}
+    \label{diffGenTr}
+  \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffGenTest1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffGenTest2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffGenTest3.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \caption{Pareto Front on test data with different exchange interval}
+    \label{diffGenT}
+  \end{figure}
+ We can see from Fig.\ref{diffGenTr}, Fig.\ref{diffGenT} ($N_{total} = 264, N_{island} = 8$) that the choice of exchange interval also impacts the performance of our model. Generally, a longer exchange interval leads to a Pareto Front with better solutions.
+
+
+  
+
+
+
+\subsection{Computation Time}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/diffTime.png}
+  \caption{Computation time using different number of cores}\label{phT}
+\end{figure}
+
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/diffTimeGen.png}
     \caption{Computational time with different $I_{update}$}\label{diffTimeGen}
   \end{figure}
 
-
-
-\subsection{Computation Time}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{figures/diffTime.png}
-  \caption{Computation time of 3000 generations, $N_{pop}$ = 264.}\label{phT}
-\end{figure}
-With $n$ cores, we observe a speed up of up to $n^2$ times in our computational experiments.
+ With $n$ cores, we observe a speed up of up to $n^2$ times in our computational experiments, as is shown in Fig.\ref{phT}. Fig.\ref{diffTimeGen} indicates that exchange interval doesn't have an obvious impact on running time.
 
 \subsection{Compare with other model}
-We compared our model with the synchronized model by Nojima et al.\cite{nojima2015application}, as is shown in Fig.\ref{diffModelTr}, Fig.\ref{diffModelTest} and Fig.\ref{diffModelTime}. The experiments are done using 8 cores.
+We compared our model with the synchronized model by Nojima et al.\cite{nojima2015application}, as is shown in Fig.\ref{diffModelTr}, Fig.\ref{diffModelT} and Fig.\ref{diffModelTime}. The experiments are done using 8 cores and other setting are the same as previous mentioned experiments.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{figures/diffModelTrain.png}
-  \caption{Comparison on training data.}\label{diffModelTr}
-\end{figure}
+    \centering
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffModelTrain1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffModelTrain2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.98\textwidth]{figures/diffModelTrain3.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \caption{Pareto Front on training data obtained by the two models}
+    \label{diffModelTr}
+  \end{figure}
+
+
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{figures/diffModelTest.png}
-  \caption{Comparison on test data.}\label{diffModelTest}
-\end{figure}
+    \centering
+    \begin{minipage}[t]{0.40\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffModelTest1.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffModelTest2.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}%
+    \centering
+    \begin{minipage}[t]{0.25\textwidth}
+    \includegraphics[width=0.88\textwidth]{figures/diffModelTest3.png}
+    % \caption{Pareto Front on training data}
+    \end{minipage}
+    \caption{Pareto Front on test data obtained by the two models}
+    \label{diffModelT}
+  \end{figure}
+
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/diffModelTime.png}
-  \caption{Comparison on total time.}\label{diffModelTime}
+  \caption{Comparison of total running time of the two models.}\label{diffModelTime}
 \end{figure}
 
-We can see that our model is better at avoid overfitting and is 10\% faster on average compared to the synchronized island model.
-
+We can see silimar performance from the two models in terms of searching for non-dominated solutions. Thanks to the decrease of queueing cost in population exchange, our asynchronous island model runs about 20\% faster than the synchronized model.
  \section{Conclusion}
  In this project, we implemented a parallel multi-objective fuzzy GBML algorithm and applied it to an 3-objective fuzzy classification optimization problem.
 
